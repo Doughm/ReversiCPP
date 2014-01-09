@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{e33d3c60-655d-4a23-ac3e-2bcbd0f04114}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="animation.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="convert.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="gametimer.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="loadini.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="quad.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="ramdom.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="ticker.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="window.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="animation.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="convert.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="gametimer.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="loadini.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="program.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="quad.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="random.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="ticker.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="window.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="engine.ini">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="arial.ttf">
+      <Filter>Resource Files</Filter>
+    </Font>
+  </ItemGroup>
+</Project>
