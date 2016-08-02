@@ -1,14 +1,33 @@
 #include "game.h"
 
+
 //
 #include <iostream>
 
-Game::Game()
+Game::Game(Window* passedWindow)
 {
+	window = passedWindow;
+	gameSpeed = 30;
 	turn = "Black";
 	piecesBlack = 0;
 	piecesWhite = 0;
 	resetBoard();
+}
+
+Game::~Game()
+{
+	window = NULL;
+}
+
+//sets up the board on screen
+void Game::setupBoard()
+{
+	for (int i = 0; i < 64; i++)
+	{
+		window->moveEntity("square" + Convert::intToString(i + 1), sf::Vector2f((i % 8) * 60 + 1, (i / 8) * 60 + 1));
+		window->moveEntity("piece" + Convert::intToString(i + 1), sf::Vector2f((i % 8) * 60 + 5, (i / 8) * 60 + 5));
+		window->makeInvisible("piece" + Convert::intToString(i + 1));
+	}
 }
 
 //resets the board to starting positions
@@ -68,6 +87,11 @@ void Game::placePiece(int index)
 	*/
 }
 
+//returns the game speed
+float Game::getGameSpeed()
+{
+	return gameSpeed;
+}
 
 //returns if a piece has been placed
 bool Game::getPlaced(int index)
@@ -710,4 +734,99 @@ bool Game::gameEnd()
         }
     }
     return true;
+}
+
+//takes in input from the mouse
+void Game::mouseInput()
+{
+	mouseClick.clear();
+	mouseClick.append(window->inputMouseClick());
+}
+
+//mouse input for the game
+void Game::mouseInputGame()
+{
+	if (mouseClick == "Leftbutton")
+	{
+		tempStr.clear();
+		tempStr = window->batchIsWithin("square", window->mousePositionView());
+		if (tempStr.find("square") != std::string::npos)
+		{
+			placePiece(window->batchNumber(tempStr) - 1);
+		}
+		else if (window->isWithin("passbutton", window->mousePositionView()))
+		{
+			switchTurn();
+		}
+
+	}
+}
+
+//mouse input for the reset button
+void Game::mouseInputReset()
+{
+	if (mouseClick == "Leftbutton")
+	{
+		if (window->isWithin("resetbutton", window->mousePositionView()))
+		{
+			resetBoard();
+		}
+	}
+}
+
+//updates the piece graphics 
+void Game::updatePieceGraphics()
+{
+	for (int i = 0; i < 64; i++)
+	{
+		if (getPlaced(i))
+		{
+			window->makeVisible("piece" + Convert::intToString(i + 1));
+		}
+		if (getColor(i) == "White")
+		{
+			window->setColor("piece" + Convert::intToString(i + 1), sf::Color::White);
+		}
+		else if (getColor(i) == "Black")
+		{
+			window->setColor("piece" + Convert::intToString(i + 1), sf::Color::Black);
+		}
+		else if (getColor(i) == "empty")
+		{
+			window->makeInvisible("piece" + Convert::intToString(i + 1));
+		}
+	}
+}
+
+//updates the UI
+void Game::updateUI()
+{
+	window->setText("blackpieces", "Black Pieces " + Convert::intToString(getPiecesBlack()));
+	window->setText("whitepieces", "White Pieces " + Convert::intToString(getPiecesWhite()));
+
+	if (getTurn() == "Black")
+	{
+		window->setText("turn", "Black Players Turn");
+		window->setColor("turn", sf::Color::Black);
+	}
+	else if (getTurn() == "White")
+	{
+		window->setText("turn", "White Players Turn");
+		window->setColor("turn", sf::Color::White);
+	}
+}
+
+//sets the marquee if the game is won
+void Game::setMarqueeWon()
+{
+	if (getPiecesBlack() > getPiecesWhite())
+	{
+		window->setText("turn", "Black Player Wins!");
+		window->setColor("turn", sf::Color::Black);
+	}
+	else if (getPiecesBlack() < getPiecesWhite())
+	{
+		window->setText("turn", "White Player Wins!");
+		window->setColor("turn", sf::Color::White);
+	}
 }

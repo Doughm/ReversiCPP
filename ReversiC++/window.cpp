@@ -7,7 +7,7 @@
 
 Window::Window() :PI(3.141592653589793)
 {
-	programName = "Asteroids";
+	programName = "Reversi";
 	loadINI.setFile("engine.ini");
 	if(loadINI.fileExists("engine.ini"))
 	{
